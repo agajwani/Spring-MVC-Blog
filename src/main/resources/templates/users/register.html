@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: site-head">
+    <title>Register</title>
+</head>
+
+<body>
+
+<header th:replace="layout :: site-header" />
+
+
+<!--<h2>Please login</h2>-->
+<!--<form method="post" th:object="${loginForm}">-->
+    <!--<label for="username">Username:</label>-->
+    <!--<input type="text" id="username" name="username"-->
+           <!--th:value="*{username}" />-->
+    <!--<span class="formError"-->
+          <!--th:if="${#fields.hasErrors('username')}"-->
+          <!--th:errors="*{username}">Invalid username</span>-->
+
+    <!--<br />-->
+
+    <!--<label for="password">Password:</label>-->
+    <!--<input type="text" id="password" name="password"-->
+           <!--th:value="*{password}"/>-->
+    <!--<span class="formError"-->
+          <!--th:if="${#fields.hasErrors('password')}"-->
+          <!--th:errors="*{password}">Invalid password</span>-->
+
+    <!--<br />-->
+    <!--<input type="submit" value="Login" />-->
+<!--</form>-->
+
+
+<form method="post" th:object="${RegistrationForm}">
+
+    <div><label for="username">Username:</label></div>
+    <input id="username" type="text" name="username" th:value="*{username}" />
+    <span class="formError" th:if="${#fields.hasErrors('username')}"
+          th:errors="*{username}">Invalid username</span>
+
+    <div><label for="password">Password:</label></div>
+    <input id="password" type="password" name="password" th:value="*{password}" />
+    <span class="formError" th:if="${#fields.hasErrors('password')}"
+          th:errors="*{password}">Invalid password</span>
+
+    <div><label for="fullname">FullName:</label></div>
+    <input id="fullname" type="text" name="fullname" th:value="*{fullname}" />
+    <span class="formError" th:if="${#fields.hasErrors('fullname')}"
+          th:errors="*{fullname}">Invalid fullName</span>
+
+    <div><input type="submit" value="Register"/>
+        <a href="register.html" th:href="@{/users/register}">[Go to Register]</a></div>
+</form>
+
+<h1>Result</h1>
+<p th:text="'Username' + ${registrationForm.username}" />
+<p th:text="'Password: ' + ${registrationForm.password}" />
+<p th:text="'FullName: ' + ${registrationForm.fullname}" />
+<a href="/user/login.html" th:href="@{/users/login}">Please Login</a>
+
+
+<footer th:replace="layout :: site-footer" />
+
+</body>
+
+</html>
+
